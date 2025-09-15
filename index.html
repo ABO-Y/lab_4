@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NUST Student Registration Portal for registering and managing student profiles.">
+  <title>NUST Student Registration</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="https://www.nust.na/sites/default/files/favicon.ico">
+</head>
+<body>
+  <noscript>
+    <div style="color: red; font-weight: bold;">This site requires JavaScript to function properly. Please enable JavaScript in your browser.</div>
+  </noscript>
+  <main>
+    <h1>Student Registration</h1>
+
+    <!-- Registration Form -->
+    <section aria-labelledby="registerHeading">
+      <form id="registrationForm" aria-describedby="formHelp" autocomplete="on">
+        <fieldset aria-labelledby="registerHeading">
+          <legend id="registerHeading">Register Student</legend>
+
+          <label for="firstName" id="labelFirstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" required aria-required="true" autocomplete="given-name" autofocus maxlength="30" aria-labelledby="labelFirstName" tabindex="0">
+          <span class="error" id="errorFirstName" aria-live="polite"></span>
+
+          <label for="lastName" id="labelLastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" required aria-required="true" autocomplete="family-name" maxlength="30" aria-labelledby="labelLastName" tabindex="0">
+          <span class="error" id="errorLastName" aria-live="polite"></span>
+
+          <label for="email" id="labelEmail">Email:</label>
+          <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" maxlength="50" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" aria-labelledby="labelEmail" tabindex="0">
+          <span class="error" id="errorEmail" aria-live="polite"></span>
+
+          <label for="programme" id="labelProgramme">Programme:</label>
+          <select id="programme" name="programme" required autocomplete="off" aria-labelledby="labelProgramme" tabindex="0">
+            <option value="">--Select Programme--</option>
+            <option value="CS">Computer Science</option>
+            <option value="CYS">Cyber Security</option>
+            <option value="IMS">Informatics</option>
+          </select>
+          <span class="error" id="errorProgramme" aria-live="polite"></span>
+
+          <label for="year" id="labelYear">Year of Study:</label>
+          <select id="year" name="year" required autocomplete="off" aria-labelledby="labelYear" tabindex="0">
+            <option value="">--Select Year--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          <span class="error" id="errorYear" aria-live="polite"></span>
+
+          <label for="interests" id="labelInterests">Interests (optional):</label>
+          <textarea id="interests" name="interests" maxlength="200" placeholder="e.g. AI, Robotics, Sports" aria-labelledby="labelInterests" tabindex="0"></textarea>
+          <span class="error" id="errorInterests" aria-live="polite"></span>
+
+          <label for="photoUrl" id="labelPhotoUrl">Photo URL (optional):</label>
+          <input type="url" id="photoUrl" name="photoUrl" placeholder="https://..." autocomplete="off" aria-labelledby="labelPhotoUrl" tabindex="0">
+          <span class="error" id="errorPhotoUrl" aria-live="polite"></span>
+
+          <button type="submit" tabindex="0">Register</button>
+          <button type="reset" tabindex="0">Reset</button>
+        </fieldset>
+        <div id="formHelp" aria-live="polite"></div>
+      </form>
+      <div id="successMessage" aria-live="polite" style="color: green; margin-top: 10px;"></div>
+      <button id="toggleSuccess">Show/Hide Message</button>
+    </section>
+
+    <!-- Profile Cards -->
+    <section aria-labelledby="profilesHeading">
+      <h2 id="profilesHeading">Profiles</h2>
+      <div id="profileContainer"></div>
+    </section>
+
+    <!-- Summary Table -->
+    <section aria-labelledby="summaryHeading">
+      <h2 id="summaryHeading">Summary</h2>
+      <div class="table-wrapper">
+        <table id="summaryTable">
+          <caption style="caption-side: top; font-weight: bold; color: #0077cc; padding: 8px 0;">
+            Registered Students
+          </caption>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Programme</th>
+              <th>Year</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Table rows will be added dynamically by script.js -->
+          </tbody>
+        </table>
+      </div>
+      <p id="studentCount"></p>
+    </section>
+  </main>
+  <style>
+    body {
+      font-size: 1.1rem;
+      color: #222;
+      background: #fff;
+    }
+    label {
+      font-weight: 600;
+      margin-top: 8px;
+      display: block;
+    }
+    input, select, textarea, button {
+      font-size: 1rem;
+      margin-bottom: 4px;
+      padding: 6px;
+      border-radius: 4px;
+      border: 1px solid #888;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .error {
+      color: #b30000;
+      background: #fff0f0;
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+      min-height: 1.2em;
+      display: block;
+    }
+    button {
+      background: #0077cc;
+      color: #fff;
+      border: none;
+      margin-top: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    button:focus, input:focus, select:focus, textarea:focus {
+      outline: 2px solid #0077cc;
+      outline-offset: 2px;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+    fieldset {
+      border: 2px solid #0077cc;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+  </style>
+  <script src="script.js"></script>
+</body>
+</html>

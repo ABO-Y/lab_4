@@ -1,0 +1,383 @@
+
+body {
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8faff 0%, #e0eafc 100%);
+  color: #222;
+  letter-spacing: 0.02em;
+}
+
+form {
+  max-width: 420px;
+  margin: 32px auto 24px auto;
+  padding: 28px 24px 20px 24px;
+  border: none;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(123,47,242,0.08), 0 2px 8px rgba(0,0,0,0.04);
+}
+
+form fieldset {
+  border: none;
+  border-radius: 18px;
+  background: #f7fbff;
+  box-shadow: 0 2px 8px rgba(123,47,242,0.04);
+  padding: 24px 18px 18px 18px;
+  margin-bottom: 0;
+}
+
+form legend {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0077cc;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+form label,
+form input,
+form select,
+form textarea {
+  display: block;
+  width: 100%;
+}
+
+label {
+  margin-top: 12px;
+  font-weight: 600;
+  color: #7b2ff2;
+  letter-spacing: 1px;
+}
+
+input, select, textarea {
+  padding: 12px 10px;
+  margin-top: 6px;
+  border: 1.5px solid #e0eafc;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  background: #f8fafc;
+  transition: border 0.2s, background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(123,47,242,0.03);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid #7b2ff2;
+  background: #f3eaff;
+  border-color: #7b2ff2;
+  box-shadow: 0 0 0 2px #e0eafc;
+}
+
+h1, h2, h3, legend, caption {
+  color: #7b2ff2 !important;
+}
+
+button, .edit-btn, .remove-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #7b2ff2 60%, #7b2ff2 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  position: relative;
+  outline: none;
+}
+
+button:hover, .edit-btn:hover, .remove-btn:hover {
+  background: linear-gradient(90deg, #5f1ca3 60%, #7b2ff2 100%);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transform: translateY(-2px) scale(1.03);
+}
+
+button:active, .edit-btn:active, .remove-btn:active {
+  background: linear-gradient(90deg, #3d116a 60%, #5f1ca3 100%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.10);
+  transform: translateY(1px) scale(0.97);
+  filter: brightness(0.95);
+}
+
+th {
+  background: #7b2ff2 !important;
+  color: #fff !important;
+}
+
+caption {
+  color: #7b2ff2 !important;
+}
+
+#profileContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+  .profile-card {
+    width: 240px;
+    border: none;
+    border-radius: 18px;
+    padding: 22px 16px 16px 16px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 8px 32px rgba(123,47,242,0.08), 0 2px 8px rgba(0,0,0,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+
+.profile-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+  .profile-card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(123,47,242,0.08);
+    background: #f8fafc;
+    object-fit: cover;
+    aspect-ratio: 1.2/1;
+  }
+
+
+/* Action buttons (Edit, Remove) */
+.remove-btn, .edit-btn {
+  margin-top: 10px;
+  margin-right: 6px;
+  padding: 6px 14px;
+  font-size: 0.98rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.remove-btn {
+  background: linear-gradient(90deg, #e53935 60%, #ff5252 100%);
+  color: #fff;
+}
+.remove-btn:hover {
+  background: linear-gradient(90deg, #b71c1c 60%, #e53935 100%);
+}
+.edit-btn {
+  background: linear-gradient(90deg, #43cea2 60%, #185a9d 100%);
+  color: #fff;
+}
+.edit-btn:hover {
+  background: linear-gradient(90deg, #185a9d 60%, #43cea2 100%);
+}
+
+/* Error message styling (inline errors) */
+.error {
+  color: #b30000;
+  background: #fff0f0;
+  font-size: 0.98rem;
+  margin-bottom: 6px;
+  min-height: 1.2em;
+  display: block;
+  border-radius: 6px;
+  padding: 4px 10px;
+  box-shadow: 0 1px 4px rgba(179,0,0,0.04);
+}
+
+/* Table action columns */
+td > .edit-btn, td > .remove-btn {
+  margin-top: 0;
+  margin-right: 4px;
+  margin-bottom: 0;
+  padding: 5px 12px;
+  font-size: 0.95rem;
+  background: linear-gradient(90deg, #7b2ff2 60%, #7b2ff2 100%) !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+#toggleSuccess {
+  background: linear-gradient(90deg, #7b2ff2 60%, #7b2ff2 100%) !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  margin: 10px auto 20px auto;
+  display: block;
+  padding: 10px 24px;
+}
+#toggleSuccess:hover {
+  background: linear-gradient(90deg, #5f1ca3 60%, #7b2ff2 100%) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transform: translateY(-2px) scale(1.03);
+}
+#toggleSuccess:active {
+  background: linear-gradient(90deg, #3d116a 60%, #5f1ca3 100%) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.10);
+  transform: translateY(1px) scale(0.97);
+  filter: brightness(0.95);
+}
+
+/* Search/filter input styling */
+.search-filter {
+  display: block;
+  margin: 24px auto 18px auto;
+  padding: 10px 16px;
+  width: 90%;
+  max-width: 400px;
+  border: 1.5px solid #0077cc;
+  border-radius: 24px;
+  font-size: 1.08rem;
+  background: #f8fafc;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.search-filter:focus {
+  outline: 2px solid #43cea2;
+  border-color: #43cea2;
+  background: #e6f2ff;
+}
+
+.table-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+  overflow-x: auto;
+}
+
+table {
+  margin: 0 auto;
+  width: 95%;
+  max-width: 800px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(123,47,242,0.08), 0 2px 8px rgba(0,0,0,0.04);
+  background: #fff;
+}
+
+th, td {
+  padding: 12px 18px;
+  text-align: left;
+  font-size: 1.05rem;
+}
+
+th {
+  background: #7b2ff2 !important;
+  color: #fff !important;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: none;
+}
+
+tr:nth-child(even) {
+  background: #f8faff;
+}
+
+#successMessage {
+  display: block;
+  font-weight: bold;
+  padding: 10px 0;
+  background: #e9e3fa;
+  color: #7b2ff2;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  transition: opacity 0.3s;
+  animation: fadeIn 0.5s;
+  box-shadow: 0 2px 8px rgba(123,47,242,0.08);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+
+h1, h2, h3, legend, caption {
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  color: #7b2ff2;
+  letter-spacing: 2px;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  font-weight: 800;
+  text-shadow: 0 4px 16px rgba(123,47,242,0.10), 0 1px 0 #fff;
+  text-transform: uppercase;
+}
+
+legend {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: #f357a8;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(243,87,168,0.10);
+  text-transform: uppercase;
+}
+
+caption {
+  font-size: 1.1rem;
+  color: #7b2ff2;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 8px rgba(123,47,242,0.08);
+  text-transform: uppercase;
+}
+
+caption {
+  text-align: center;
+  font-weight: bold;
+  color: #0077cc;
+  padding: 8px 0;
+}
+
+@media (max-width: 900px) {
+  form, .profile-card {
+    max-width: 100%;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(123,47,242,0.06);
+  }
+  #profileContainer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .profile-card img {
+    max-width: 100%;
+    height: auto;
+  }
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+  table {
+    width: 700px;
+    min-width: 500px;
+    font-size: 0.98rem;
+  }
+  h1, h2, h3, legend, caption {
+    font-size: 1.08rem;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  button, .edit-btn, .remove-btn {
+    font-size: 1rem;
+    padding: 10px 12px;
+  }
+  .search-filter {
+    font-size: 1rem;
+    padding: 8px 10px;
+  }
+}
